@@ -99,7 +99,7 @@ canvas {
         font-size: 1.3em;
     }
     canvas {
-        height: 500vh
+        height: min(50vh, 400px);
 }
 
 #side-panel {

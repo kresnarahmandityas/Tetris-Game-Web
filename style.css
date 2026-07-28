@@ -25,17 +25,18 @@ body {
 
 #game-wrapper {
     position: relative;
-    display: inline-block;
-    max-width: 100%;
+    display: block;
+    width: min(90vw, 45vh, 480px);
+    aspect-ratio: 240 / 400;
+    margin: 0 auto;
 }
 
 canvas {
     border: solid 0.2em #fff;
     display: block;
-    height: min(75vh, 800px);
-    width: auto;
-    max-width: 90vw;
-    aspect-ratio: 240 / 400;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #pause-overlay {
@@ -80,7 +81,7 @@ canvas {
 #controls button {
     font-size: 0.6em;
     padding: 0.5em 0.7em;
-    background: #2c2c38;
+    background: #3f3f42;
     border: none;
     border-radius: 0.3em;
     color: #fff;
@@ -98,8 +99,16 @@ canvas {
     body {
         font-size: 1.3em;
     }
-    canvas {
-        height: min(50vh, 400px);
+    
+    #controls button {
+        padding: 0.9em 1.1em;
+        min-width: 3em;
+        min-height: 3em;
+    }
+
+    #controls svg{
+        width: 26px;
+        height: 26px;
     }
 }
 

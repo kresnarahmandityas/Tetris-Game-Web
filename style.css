@@ -98,6 +98,8 @@ canvas {
     body {
         font-size: 1.3em;
     }
+    canvas {
+        height: 500vh
 }
 
 #side-panel {

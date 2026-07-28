@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Tetris | K-Project</title>
+</head>
+
+<body>
+
+    <div id="game-area">
+        <div id="game-column">
+            <div id="score">Score: 0</div>
+
+            <div id="game-wrapper">
+                <canvas id="tetris" width="240" height="400"></canvas>
+                <div id="pause-overlay" class="hidden">
+                    <span>PAUSE</span>
+                </div>
+            </div>
+
+            <div id="controls">
+                <button id="btn-left"><i data-feather="arrow-left"></i></button>
+                <button id="btn-down"><i data-feather="arrow-down"></i></button>
+                <button id="btn-right"><i data-feather="arrow-right"></i></button>
+                <button id="btn-rotate-ccw"><i data-feather="rotate-ccw"></i></button>
+                <button id="btn-rotate-cw"><i data-feather="rotate-cw"></i></button>
+                <button id="btn-pause"><i data-feather="pause"></i></button>
+            </div>
+        </div>
+
+        <div id="side-panel">
+            <div class="panel-box">
+                <h3>Level</h3>
+                <p id="level-display">1</p>
+            </div>
+            <div class="panel-box">
+                <h3>Best Score</h3>
+                <p id="best-score-display">0</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+   <script>
+      feather.replace();
+    </script>
+
+
+</body>
+</html>

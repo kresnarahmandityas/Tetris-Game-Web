@@ -1,0 +1,131 @@
+body {
+    background-color: #202028;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 2em;
+    text-align: center;
+    padding: 1em 0.5em;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#game-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5em;
+}
+
+#game-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+canvas {
+    border: solid 0.2em #fff;
+    display: block;
+    height: min(75vh, 800px);
+    width: auto;
+    max-width: 90vw;
+    aspect-ratio: 240 / 400;
+}
+
+#pause-overlay {
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    right: 0.2em;
+    bottom: 0.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#pause-overlay.hidden {
+    display: none;
+}
+
+#pause-overlay span {
+    font-size: 0.7em;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    color: #fff;
+    text-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
+}
+
+#controls {
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    max-width: min(90vw, 480px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#controls button {
+    font-size: 0.6em;
+    padding: 0.5em 0.7em;
+    background: #2c2c38;
+    border: none;
+    border-radius: 0.3em;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#controls button:active {
+    background: #3c3c4a;
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 1.3em;
+    }
+}
+
+#side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    margin-top: calc(2.4em + 0.4em);
+}
+
+.panel-box {
+    background: #2c2c38;
+    border: solid 0.15em #fff;
+    border-radius: 0.3em;
+    padding: 0.5em 1em;
+    min-width: 4.5em;
+}
+
+.panel-box h3 {
+    margin: 0 0 0.2em 0;
+    font-size: 0.45em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa;
+}
+
+.panel-box p {
+    margin: 0;
+    font-size: 0.6em;
+    font-weight: bold;
+    color: #fff;
+}

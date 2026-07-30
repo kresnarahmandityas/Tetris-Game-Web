@@ -14,12 +14,19 @@
         <div id="game-column">
             <div id="score">Score: 0</div>
 
-            <div id="game-wrapper">
+        <div id="game-wrapper">
                 <canvas id="tetris" width="240" height="400"></canvas>
                 <div id="pause-overlay" class="hidden">
                     <span>PAUSE</span>
                 </div>
+
+            <div id="gameover-overlay" class="hidden">
+                <span class="gameover-title">GAME OVER</span>
+                <span class="gameover-score">Score: <span id="final-score">0</span></span>
+                <button id="btn-restart">Main Lagi</button>
             </div>
+        </div>
+
 
             <div id="controls">
                 <button id="btn-left"><i data-feather="arrow-left"></i></button>

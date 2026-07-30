@@ -202,13 +202,26 @@ function playerReset(){
     player.pos.y = 0;
     player.pos.x = ((arena[0].length / 2) | 0) - ((player.matrix[0].length / 2) | 0);
     if(collide(arena, player)){
-        arena.forEach((row) => row.fill(0));
-        player.score = 0;
-        level = 1;
-        linesCleared = 0;
-        dropInterval = BASE_DROP_INTERVAL;
-        updateScore();
+        triggerGameOver();
     }
+}
+
+function triggerGameOver(){
+    isGameOver = true;
+    document.getElementById("final-score").innerText = player.score;
+    document.getElementById("gameover-overlay").classList.remove("hidden");
+}
+
+function restartGame(){
+    arena.forEach((row) => row.fill(0));
+    player.score = 0;
+    level = 1;
+    linesCleared = 0;
+    dropInterval = BASE_DROP_INTERVAL;
+    isGameOver = false;
+    document.getElementById("gameover-overlay").classList.add("hidden");
+    updateScore();
+    playerReset();
 }
 
 function playerRotate(dir){
@@ -235,6 +248,7 @@ let dropCounter = 0;
 let dropInterval = BASE_DROP_INTERVAL;
 let lastTime = 0;
 let isPaused = false;
+let isGameOver = false;
 let level = 1;
 let linesCleared = 0;
 let bestScore = Number(localStorage.getItem("tetrisBestScore")) || 0;
@@ -253,7 +267,7 @@ function togglePause() {
 }
 
 function update(time = 0){
-    if (isPaused) {
+    if (isPaused || isGameOver) {
         requestAnimationFrame(update);
         return;
     }
@@ -295,12 +309,40 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-document.getElementById("btn-left").addEventListener("click", () => playerMove(-1));
-document.getElementById("btn-right").addEventListener("click", () => playerMove(1));
-document.getElementById("btn-down").addEventListener("click", () => playerDrop());
+function addHoldRepeat(button, action, repeatDelay = 120, initialDelay = 280) {
+    let repeatIntervalId = null;
+    let startTimeoutId = null;
+
+    function start(event) {
+        event.preventDefault();
+        action();
+        startTimeoutId = setTimeout(() => {
+            repeatIntervalId = setInterval(action, repeatDelay);
+        }, initialDelay);
+    }
+
+    function stop() {
+        clearTimeout(startTimeoutId);
+        clearInterval(repeatIntervalId);
+        startTimeoutId = null;
+        repeatIntervalId = null;
+    }
+
+    button.addEventListener("mousedown", start);
+    button.addEventListener("touchstart", start, { passive: false });
+    button.addEventListener("mouseup", stop);
+    button.addEventListener("mouseleave", stop);
+    button.addEventListener("touchend", stop);
+    button.addEventListener("touchcancel", stop);
+}
+
+addHoldRepeat(document.getElementById("btn-left"), () => playerMove(-1));
+addHoldRepeat(document.getElementById("btn-right"), () => playerMove(1));
+addHoldRepeat(document.getElementById("btn-down"), () => playerDrop());
 document.getElementById("btn-rotate-ccw").addEventListener("click", () => playerRotate(-1));
 document.getElementById("btn-rotate-cw").addEventListener("click", () => playerRotate(1));
 document.getElementById("btn-pause").addEventListener("click", () => togglePause());
+document.getElementById("btn-restart").addEventListener("click", () => restartGame());
 
 const colors = [
     null,

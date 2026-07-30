@@ -66,6 +66,54 @@ canvas {
     text-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
 }
 
+#gameover-overlay {
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    right: 0.2em;
+    bottom: 0.2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+#gameover-overlay.hidden {
+    display: none;
+}
+
+.gameover-title {
+    font-size: 0.65em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: #ff0d72;
+    text-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
+}
+
+.gameover-score {
+    font-size: 0.4em;
+    color: #fff;
+}
+
+#btn-restart {
+    font-size: 0.4em;
+    padding: 0.6em 1.2em;
+    background: #3877ff;
+    border: none;
+    border-radius: 0.3em;
+    color: #fff;
+    cursor: pointer;
+}
+
+#btn-restart:active {
+    background: #2a5fd8;
+}
+
 #controls {
     margin-top: 1em;
     display: flex;
@@ -89,6 +137,8 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
+    user-select: none;
 }
 
 #controls button:active {
